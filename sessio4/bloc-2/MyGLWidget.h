@@ -42,5 +42,12 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
     // Internal vars
     float scale;
     glm::vec3 pos;
+       
+    //-------------------MY VARS----------------------------
+    GLuint projLoc;
+    
+    // ------------------MY METODES-------------------------
+    void projectTransform();
+ 
 };
 

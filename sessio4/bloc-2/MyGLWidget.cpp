@@ -31,6 +31,7 @@ void MyGLWidget::paintGL ()
 
   // Carreguem la transformació de model
   modelTransform ();
+  projectTransform();
 
   // Activem el VAO per a pintar la caseta 
   glBindVertexArray (VAO_Casa);
@@ -47,6 +48,11 @@ void MyGLWidget::modelTransform ()
   glm::mat4 transform (1.0f);
   transform = glm::scale(transform, glm::vec3(scale));
   glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
+}
+
+void MyGLWidget::projectTransform(){
+    glm::mat4 Proj = glm::perspective ((float)M_PI/2.0f, 1.0f, 0.4f, 3.0f);
+    glUniformMatrix4fv(projLoc, 1,GL_FALSE,&Proj[0][0]);
 }
 
 void MyGLWidget::resizeGL (int w, int h) 
@@ -137,5 +143,8 @@ void MyGLWidget::carregaShaders()
   colorLoc = glGetAttribLocation (program->programId(), "color");
   // Uniform locations
   transLoc = glGetUniformLocation(program->programId(), "TG");
+  //ProjLoc
+  projLoc = glGetUniformLocation(program->programId(), "proj");
+
 }
 
