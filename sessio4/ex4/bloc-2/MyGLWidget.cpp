@@ -94,7 +94,7 @@ void MyGLWidget::createBuffers ()
 
   glGenBuffers(1, &VBO_HomerPos);
   glBindBuffer(GL_ARRAY_BUFFER, VBO_HomerPos);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT()), m.VBO_vertices(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT)* m.faces().size() * 3 * 3,  m.VBO_vertices(), GL_STATIC_DRAW);
 
   // Activem l'atribut vertexLoc
   glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
