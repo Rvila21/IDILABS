@@ -87,6 +87,10 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
       angle += (M_PI/4);
       break;
     }
+    case Qt::Key_Escape: { // escalar a més petit
+      exit(0);
+      break;
+    }
     default: event->ignore(); break;
   }
   update();
