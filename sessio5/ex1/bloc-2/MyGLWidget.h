@@ -6,6 +6,7 @@
 #include <QKeyEvent>
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "model.h"
 
 class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core 
 {
@@ -29,18 +30,30 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
   private:
     void createBuffers ();
     void carregaShaders ();
-    void modelTransform ();
-
+    void modelTransformHomer();
+    void projectTransform();
+    void viewTransform();
     // attribute locations
-    GLuint vertexLoc, colorLoc;
+    GLuint vertexLoc, colorLoc, projLoc,viewLoc;
     // uniform locations
     GLuint transLoc;
     // VAO i VBO names
-    GLuint VAO_Casa, VBO_CasaPos, VBO_CasaCol;
+    GLuint VAO_Homer, VBO_HomerPos, VBO_HomerCol;
     // Program
     QOpenGLShaderProgram *program;
     // Internal vars
-    float scale;
+    float scale, angle;
     glm::vec3 pos;
+    //Models
+    Model m;
+    GLuint VAO_Terra, VBO_TerraPos, VBO_TerraCol;   
+    void modelTransformTerra();
+    
+    
+    //-------------------MY VARS----------------------------
+      float FOV, ra;
+    // -----------------MY METODES-------------------------
+    
+ 
 };
 
