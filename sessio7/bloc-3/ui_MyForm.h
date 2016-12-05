@@ -16,7 +16,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -31,7 +30,7 @@ public:
     MyGLWidget *widget;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
-    QRadioButton *radioButton;
+    QPushButton *pushButton_2;
     QPushButton *pushButton;
 
     void setupUi(QWidget *MyForm)
@@ -57,10 +56,10 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        radioButton = new QRadioButton(MyForm);
-        radioButton->setObjectName(QStringLiteral("radioButton"));
+        pushButton_2 = new QPushButton(MyForm);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        verticalLayout->addWidget(radioButton);
+        verticalLayout->addWidget(pushButton_2);
 
         pushButton = new QPushButton(MyForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
@@ -78,6 +77,7 @@ public:
 
         retranslateUi(MyForm);
         QObject::connect(pushButton, SIGNAL(clicked()), MyForm, SLOT(close()));
+        QObject::connect(pushButton_2, SIGNAL(clicked()), widget, SLOT(persp()));
 
         QMetaObject::connectSlotsByName(MyForm);
     } // setupUi
@@ -85,7 +85,7 @@ public:
     void retranslateUi(QWidget *MyForm)
     {
         MyForm->setWindowTitle(QApplication::translate("MyForm", "Form", 0));
-        radioButton->setText(QApplication::translate("MyForm", "Borjita", 0));
+        pushButton_2->setText(QApplication::translate("MyForm", "PushButton", 0));
         pushButton->setText(QApplication::translate("MyForm", "&Sortir", 0));
     } // retranslateUi
 

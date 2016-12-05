@@ -17,7 +17,12 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
   public:
     MyGLWidget (QWidget *parent=0);
     ~MyGLWidget ();
-    void pers();
+  
+ public slots:
+   void persp();
+   
+signals:
+ 
 
   protected:
     // initializeGL - Aqui incluim les inicialitzacions del contexte grafic.

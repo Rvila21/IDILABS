@@ -322,10 +322,6 @@ void MyGLWidget::calculaCapsaModel ()
   centrePatr[0] = (minx+maxx)/2.0; centrePatr[1] = (miny+maxy)/2.0; centrePatr[2] = (minz+maxz)/2.0;
 }
 
-void MyGLWidget::pers() {
-      perspectiva = !perspectiva;
-      projectTransform ();  
-}
 
 void MyGLWidget::keyPressEvent(QKeyEvent* event) 
 {
@@ -340,10 +336,15 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
   }
   update();
 }
-void MyGLWidget::borjitaPressEvent(){
-  
-  pers();
+
+void MyGLWidget::persp(){
+  makeCurrent();
+  perspectiva = !perspectiva;
+  projectTransform ();
+  update();
 }
+
+
 
 void MyGLWidget::mousePressEvent (QMouseEvent *e)
 {
