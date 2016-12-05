@@ -22,6 +22,19 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>20</y>
+        <width>90</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RadioButton</string>
+      </property>
+     </widget>
     </widget>
    </item>
    <item>

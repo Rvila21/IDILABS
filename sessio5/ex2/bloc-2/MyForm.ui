@@ -40,13 +40,6 @@
       </spacer>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton">
-       <property name="text">
-        <string>Borjita</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -80,28 +73,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>810</x>
-     <y>717</y>
+     <x>796</x>
+     <y>596</y>
     </hint>
     <hint type="destinationlabel">
      <x>839</x>
      <y>529</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radioButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>radioButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>781</x>
-     <y>677</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>752</x>
-     <y>683</y>
     </hint>
    </hints>
   </connection>
