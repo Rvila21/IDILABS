@@ -29,6 +29,7 @@ public:
     QHBoxLayout *horizontalLayout;
     MyGLWidget *widget;
     QVBoxLayout *verticalLayout;
+    QPushButton *pushButton_3;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_2;
     QPushButton *pushButton;
@@ -52,6 +53,11 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        pushButton_3 = new QPushButton(MyForm);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+
+        verticalLayout->addWidget(pushButton_3);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -78,6 +84,7 @@ public:
         retranslateUi(MyForm);
         QObject::connect(pushButton, SIGNAL(clicked()), MyForm, SLOT(close()));
         QObject::connect(pushButton_2, SIGNAL(clicked()), widget, SLOT(persp()));
+        QObject::connect(pushButton_3, SIGNAL(clicked()), widget, SLOT(p()));
 
         QMetaObject::connectSlotsByName(MyForm);
     } // setupUi
@@ -85,6 +92,7 @@ public:
     void retranslateUi(QWidget *MyForm)
     {
         MyForm->setWindowTitle(QApplication::translate("MyForm", "Form", 0));
+        pushButton_3->setText(QApplication::translate("MyForm", "borjita", 0));
         pushButton_2->setText(QApplication::translate("MyForm", "PushButton", 0));
         pushButton->setText(QApplication::translate("MyForm", "&Sortir", 0));
     } // retranslateUi

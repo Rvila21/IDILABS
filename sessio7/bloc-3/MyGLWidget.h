@@ -20,6 +20,7 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
   
  public slots:
    void persp();
+   void p();
    
 signals:
  
@@ -72,5 +73,13 @@ signals:
     int xClick, yClick;
     float angleY;
     bool perspectiva;
+    
+    //-----------------------------------------
+    GLuint posFocus, colFocus;
+    glm::vec3 posF, colF;
+    
+    //-------------------------------------
+    void modelColLlum();
+    void modelPosLlum();
 };
 

@@ -27,6 +27,13 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>borjita</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -72,6 +79,7 @@
    <slots>
     <slot>borjitap()</slot>
     <slot>persp()</slot>
+    <slot>p()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -106,6 +114,22 @@
     <hint type="destinationlabel">
      <x>703</x>
      <y>602</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>p()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>768</x>
+     <y>27</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>711</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>

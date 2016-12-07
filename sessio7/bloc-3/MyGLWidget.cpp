@@ -25,8 +25,12 @@ void MyGLWidget::initializeGL ()
 
   glClearColor(0.5, 0.7, 1.0, 1.0); // defineix color de fons (d'esborrat)
   glEnable(GL_DEPTH_TEST);
+  posF = glm::vec3(0,1.0,1.0);
+  colF = glm::vec3(0.8,0.8,0.8);
   carregaShaders();
   createBuffers();
+  modelPosLlum();
+  modelColLlum();
   projectTransform ();
   viewTransform ();
 }
@@ -149,8 +153,8 @@ void MyGLWidget::createBuffers ()
   };
 
   // Definim el material del terra
-  glm::vec3 amb(0.2,0,0.2);
-  glm::vec3 diff(0.8,0,0.8);
+  glm::vec3 amb(0,0,0.2);
+  glm::vec3 diff(0,0,0.8);
   glm::vec3 spec(0,0,0);
   float shin = 100;
 
@@ -259,6 +263,8 @@ void MyGLWidget::carregaShaders()
   transLoc = glGetUniformLocation (program->programId(), "TG");
   projLoc = glGetUniformLocation (program->programId(), "proj");
   viewLoc = glGetUniformLocation (program->programId(), "view");
+  colFocus = glGetUniformLocation (program->programId(), "colFocus");
+  posFocus = glGetUniformLocation (program->programId(), "posFocus");
 }
 
 void MyGLWidget::modelTransformPatricio ()
@@ -322,6 +328,14 @@ void MyGLWidget::calculaCapsaModel ()
   centrePatr[0] = (minx+maxx)/2.0; centrePatr[1] = (miny+maxy)/2.0; centrePatr[2] = (minz+maxz)/2.0;
 }
 
+void MyGLWidget::modelColLlum(){
+    glUniform3fv(colFocus,1,&colF[0]);
+}
+
+void MyGLWidget::modelPosLlum(){
+  glUniform3fv(posFocus,1,&posF[0]);
+}
+
 
 void MyGLWidget::keyPressEvent(QKeyEvent* event) 
 {
@@ -332,12 +346,32 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event)
       projectTransform ();
       break;
     }
+    case Qt::Key_K: { // canvia òptica entre perspectiva i axonomètrica
+      posF.x -= 0.5f;
+       modelPosLlum();
+      break;
+    }
+    case Qt::Key_L: { // canvia òptica entre perspectiva i axonomètrica
+      posF.x += 0.5f;
+      modelPosLlum ();
+      break;
+    }
+    case Qt::Key_Escape: { // canvia òptica entre perspectiva i axonomètrica
+      exit(0);
+      break;
+    }
     default: event->ignore(); break;
   }
   update();
 }
 
 void MyGLWidget::persp(){
+  makeCurrent();
+  perspectiva = !perspectiva;
+  projectTransform ();
+  update();
+}
+void MyGLWidget::p(){
   makeCurrent();
   perspectiva = !perspectiva;
   projectTransform ();
