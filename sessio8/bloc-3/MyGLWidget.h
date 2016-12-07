@@ -17,6 +17,13 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
   public:
     MyGLWidget (QWidget *parent=0);
     ~MyGLWidget ();
+  
+ public slots:
+   void persp();
+   void p();
+   
+signals:
+ 
 
   protected:
     // initializeGL - Aqui incluim les inicialitzacions del contexte grafic.
@@ -66,5 +73,13 @@ class MyGLWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
     int xClick, yClick;
     float angleY;
     bool perspectiva;
+    
+    //-----------------------------------------
+    GLuint posFocus, colFocus;
+    glm::vec3 posF, colF;
+    
+    //-------------------------------------
+    void modelColLlum();
+    void modelPosLlum();
 };
 
